@@ -13,6 +13,7 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_code', 100); // Codigo del Producto P000
@@ -38,6 +39,7 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('products');
     }
 }

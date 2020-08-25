@@ -13,6 +13,21 @@ class CreateSuppliesTable extends Migration
      */
     public function up()
     {
+        Schema::create('measurements', function (Blueprint $table) {
+            $table->id();
+            $table->string('unit_measurement', 50); // Unidad de Medida
+            $table->string('description', 50); // Descripcion
+            
+            $table->timestamps();
+        });
+        Schema::create('tariffheadings', function (Blueprint $table) {
+            $table->id();
+            $table->string('tariff_heading', 50); // Partida Arancelaria 
+            $table->string('description', 50); // Descripcion
+            
+            $table->timestamps();
+        });
+        
         Schema::create('supplies', function (Blueprint $table) {
             $table->id();
             $table->string('input_code', 100); // Codigo del insumo I000
@@ -29,6 +44,7 @@ class CreateSuppliesTable extends Migration
                 
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -38,6 +54,8 @@ class CreateSuppliesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('measurements');
+        Schema::dropIfExists('tariffheadings');
         Schema::dropIfExists('supplies');
     }
 }
