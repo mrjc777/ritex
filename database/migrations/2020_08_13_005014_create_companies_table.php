@@ -26,16 +26,24 @@ class CreateCompaniesTable extends Migration
             $table->string('ruex_number', 100); //Nro Ruex
             $table->string('enrollment_number', 100); //Nro Matricula
             $table->string('nit_number', 100); // Nro NIT
-            $table->string('mining_sector', 20); // Sector Minero
-            $table->string('ritex_type', 20); // Tipo de Ritex
-            $table->boolean('tax')->default(0); //Impuestos Nacionales, flag del servicio de adeudos tributarios
-            $table->boolean('national_custom')->default(0); // Aduana Nacional, flag del servicio de adeudos tributarios
-            $table->date('enablement_date'); // Fecha de habilitaci[on del usuario
+            //$table->string('mining_sector', 20); // Sector Minero
+            //$table->string('ritex_type', 20); // Tipo de Ritex
+            //$table->boolean('tax')->default(0); //Impuestos Nacionales, flag del servicio de adeudos tributarios
+            //$table->boolean('national_custom')->default(0); // Aduana Nacional, flag del servicio de adeudos tributarios
+
+            $table->timestamp('created_date'); //Fecha de creacion
+            $table->timestamp('updated_date')->nullable(); //Fecha de Modificacion 
+            $table->timestamp('deleted_date')->nullable(); //Fecha de eliminacion
+            $table->integer('updated_user')->nullable(); //Usuario de modificacion
+            $table->integer('deleted_user')->nullable(); //Usuario de eliminacion
+            $table->timestamp('enable_date')->nullable(); // Fecha de habilitacion
+            $table->timestamp('reject_date')->nullable(); // Fecha de rechazo
+            $table->integer('enable_reject_user')->nullable(); //Usuario de Habilitacion/rechazo
             
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
             
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

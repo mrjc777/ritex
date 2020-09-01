@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Company;
-use App\Helpers\APIHelpers;
+use App\Tariffheading;
 
-class CompanyController extends Controller
+class TariffheadingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //$company = new Company();
-        //return $company->all();
-        //return \DB::select('select get_all_companies(?,?)', array($valor1, $valor2)); Para mandar parametros
-        
-        $data = \DB::select('select get_all_companies()');
-        return $data[0]->get_all_companies;
-        //return $data->get_all_companies;
-        
+        //$tariffheading = new Tariffheading();
+        //return $tariffheading->all();
+        $data = \DB::select('select get_all_tariffheadings()');
+        return $data[0]->get_all_tariffheadings;
     }
 
     /**
@@ -43,22 +38,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = \DB::select('select insert_companies(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array(
-        $request->business_name,
-        $request->direction,
-        $request->city,
-        $request->state,
-        $request->phone,
-        $request->activity,
-        $request->legal_representative,
-        $request->email,
-        $request->ruex_number,
-        $request->enrollment_number,
-        $request->nit_number
-        ));
-        return $data[0]->insert_companies;
-        
-        
+        //
     }
 
     /**
@@ -69,8 +49,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::find($id);
-        return $company;
+        //
     }
 
     /**

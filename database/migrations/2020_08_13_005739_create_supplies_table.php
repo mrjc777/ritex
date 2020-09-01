@@ -18,14 +18,26 @@ class CreateSuppliesTable extends Migration
             $table->string('unit_measurement', 50); // Unidad de Medida
             $table->string('description', 50); // Descripcion
             
-            $table->timestamps();
+            $table->timestamp('created_date'); //Fecha de creacion
+            $table->timestamp('updated_date')->nullable(); //Fecha de Modificacion 
+            $table->timestamp('deleted_date')->nullable(); //Fecha de eliminacion
+            $table->integer('created_user')->nullable(); //Usuario de creacion
+            $table->integer('updated_user')->nullable(); //Usuario de modificacion
+            $table->integer('deleted_user')->nullable(); //Usuario de eliminacion
+            //$table->timestamps();
         });
         Schema::create('tariffheadings', function (Blueprint $table) {
             $table->id();
             $table->string('tariff_heading', 50); // Partida Arancelaria 
             $table->string('description', 50); // Descripcion
             
-            $table->timestamps();
+            $table->timestamp('created_date'); //Fecha de creacion
+            $table->timestamp('updated_date')->nullable(); //Fecha de Modificacion 
+            $table->timestamp('deleted_date')->nullable(); //Fecha de eliminacion
+            $table->integer('created_user')->nullable(); //Usuario de creacion
+            $table->integer('updated_user')->nullable(); //Usuario de modificacion
+            $table->integer('deleted_user')->nullable(); //Usuario de eliminacion
+            //$table->timestamps();
         });
         
         Schema::create('supplies', function (Blueprint $table) {
@@ -42,7 +54,13 @@ class CreateSuppliesTable extends Migration
             $table->unsignedBigInteger('companie_id');
             $table->foreign('companie_id')->references('id')->on('companies'); 
                 
-            $table->timestamps();
+            $table->timestamp('created_date'); //Fecha de creacion
+            $table->timestamp('updated_date')->nullable(); //Fecha de Modificacion 
+            $table->timestamp('deleted_date')->nullable(); //Fecha de eliminacion
+            $table->integer('created_user')->nullable(); //Usuario de creacion
+            $table->integer('updated_user')->nullable(); //Usuario de modificacion
+            $table->integer('deleted_user')->nullable(); //Usuario de eliminacion
+            //$table->timestamps();
         });
         
     }
@@ -54,8 +72,9 @@ class CreateSuppliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measurements');
-        Schema::dropIfExists('tariffheadings');
         Schema::dropIfExists('supplies');
+        Schema::dropIfExists('tariffheadings');
+        Schema::dropIfExists('measurements');
+        
     }
 }
