@@ -22,6 +22,8 @@ class CreateCompaniesTable extends Migration
             $table->string('phone', 50); // Telefono
             $table->string('activity', 100); //Actividad
             $table->string('legal_representative', 100); // Representante Legal
+            $table->string('dni', 50); //Carnet de Identidad
+            $table->string('issued', 50); // Expedido
             $table->string('email', 50); // Correo Electronico
             $table->string('ruex_number', 100); //Nro Ruex
             $table->string('enrollment_number', 100); //Nro Matricula

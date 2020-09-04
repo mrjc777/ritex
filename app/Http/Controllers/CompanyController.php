@@ -43,7 +43,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = \DB::select('select insert_companies(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array(
+        $data = \DB::select('select insert_companies(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array(
         $request->business_name,
         $request->direction,
         $request->city,
@@ -51,6 +51,8 @@ class CompanyController extends Controller
         $request->phone,
         $request->activity,
         $request->legal_representative,
+        $request->dni,
+        $request->issued,
         $request->email,
         $request->ruex_number,
         $request->enrollment_number,
@@ -105,5 +107,13 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // funciones personalizadas
+
+    public function preregistration()
+    {
+        $data = \DB::select('select get_companies_preregister()');
+        return $data[0]->get_companies_preregister;
     }
 }

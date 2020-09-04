@@ -21,3 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('companies', 'CompanyController');
 Route::resource('measurements', 'MeasurementController');
 Route::resource('tariffheadings', 'TariffheadingController');
+Route::resource('warehouses', 'WarehouseController');
+Route::resource('supplies', 'SupplyController');
+
+// Rutas personalizadas
+Route::get('preregcompanies', 'CompanyController@preregistration');

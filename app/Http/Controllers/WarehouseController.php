@@ -15,7 +15,8 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        //
+        $data = \DB::select('select get_all_warehouses()');
+        return $data[0]->get_all_warehouses;
     }
 
     /**
@@ -36,11 +37,12 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        $warehouse = new Warehouse();
-
-        $warehouse->direction = $request->direction;
-        $warehouse->kind = $request->kind;
-        $warehouse->companie_id = $request->companie_id;
+        $data = \DB::select('select insert_warehouses(?, ?, ?)', array(
+            $request->direction,
+            $request->kind,
+            $request->companie_id
+        ));
+        return $data[0]->insert_warehouses;
     }
 
     /**

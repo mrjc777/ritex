@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Tariffheading;
 
-class TariffheadingController extends Controller
+class SupplyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,8 @@ class TariffheadingController extends Controller
      */
     public function index()
     {
-        //$tariffheading = new Tariffheading();
-        //return $tariffheading->all();
-        $data = \DB::select('select get_all_tariffheadings()');
-        return $data[0]->get_all_tariffheadings;
+        $data = \DB::select('select get_all_supplies()');
+        return $data[0]->get_all_supplies;
     }
 
     /**
@@ -38,11 +35,7 @@ class TariffheadingController extends Controller
      */
     public function store(Request $request)
     {
-        $data = \DB::select('select insert_tariffheadings(?, ?)', array(
-            $request->tariff_heading,
-            $request->description
-        ));
-        return $data[0]->insert_tariffheadings;
+        //
     }
 
     /**
